@@ -901,7 +901,7 @@ var cont = {
     var mailOptions = {
       from: from_email,
       to: "enquiry@domain.com",
-      subject: "Welcome to Clara",
+      subject: "Welcome to Maia Care",
       text: html,
       html: html,
     };
