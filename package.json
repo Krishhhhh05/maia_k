@@ -5,13 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku": "NODE_ENV=prod  pm2 start index.js -i 1 --name staging.apis.domain.com",
-    "start_apis": "DEBUG=nC npm run start",
-    "prod": "NODE_ENV=prod  pm2 start index.js -i 2 --name apis.domain.com",
-    "staging": "NODE_ENV=staging  pm2 start index.js -i 1 --name staging.apis.domain.com",
+    "prod": "NODE_ENV=production pm2 start index.js -i 2 --name apis.domain.com",
+    "staging": "NODE_ENV=staging pm2 start index.js -i 1 --name staging.apis.domain.com",
     "start": "node index.js",
     "dev": "SET NODE_ENV=dev& nodemon index.js",
-    "de": "NODE_ENV=prod nodemon index.js",
+    "de": "NODE_ENV=production nodemon index.js",
     "de2": "DEBUG=* nodemon index.js"
   },
   "engines": {
