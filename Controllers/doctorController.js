@@ -138,7 +138,7 @@ var Doc = {
       var id = res.locals.doctor._id;
       console.log(id);
 
-      var message = `Click on the link to confirm your register http://www.profile.domain.com/on_boarding.html?id=${id}`;
+      var message = `Click on the link to confirm your register http://www.profile.maia.care/on_boarding.html?id=${id}`;
       var number = res.locals.doctor.number;
       var options = {
         url: "https://api.msg91.com/api/v2/sendsms?country=91",

@@ -883,7 +883,7 @@ var cont = {
     var body = req.body;
     var html = `Hey You have a new enquiry from ${body.name}. 
                     Contact Number : ${body.number}. Email ID : ${body.email}`;
-    var from_email = "info@domain.com";
+    var from_email = "info@maia.care";
     var transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: "465",
@@ -900,7 +900,7 @@ var cont = {
 
     var mailOptions = {
       from: from_email,
-      to: "enquiry@domain.com",
+      to: "enquiry@maia.care",
       subject: "Welcome to Maia Care",
       text: html,
       html: html,

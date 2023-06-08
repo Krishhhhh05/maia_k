@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prod": "NODE_ENV=production pm2 start index.js -i 2 --name apis.domain.com",
-    "staging": "NODE_ENV=staging pm2 start index.js -i 1 --name staging.apis.domain.com",
+    "prod": "NODE_ENV=production pm2 start index.js -i 2 --name apis.maia.care",
+    "staging": "NODE_ENV=staging pm2 start index.js -i 1 --name staging.apis.maia.care",
     "start": "node index.js",
     "dev": "SET NODE_ENV=dev& nodemon index.js",
     "de": "NODE_ENV=production nodemon index.js",
