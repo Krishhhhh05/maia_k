@@ -109,17 +109,17 @@ var cont = {
       console.log("findstring", JSON.stringify(findString, null, 3));
       findString["role"] = "DOCTOR";
       var result = await User.aggregate([{
-          $match: {
-            visible: 1,
-            status: new RegExp("verified", "i"),
-            role: "DOCTOR",
-          },
+        $match: {
+          visible: 1,
+          status: new RegExp("verified", "i"),
+          role: "DOCTOR",
         },
-        {
-          $sample: {
-            size: 5
-          }
-        },
+      },
+      {
+        $sample: {
+          size: 5
+        }
+      },
       ]);
 
       // var result = await User.find(findString).populate('doctors').populate('clinics').limit(5).lean();
@@ -500,14 +500,14 @@ var cont = {
         let day = new Date();
 
         findString["$or"] = [{
-            registeredOn: {
-              $lte: day.getTime(),
-            },
-            status: "SCHEDULED",
+          registeredOn: {
+            $lte: day.getTime(),
           },
-          {
-            status: "RESCHEDULED",
-          },
+          status: "SCHEDULED",
+        },
+        {
+          status: "RESCHEDULED",
+        },
         ];
         // findString['registeredOn']={'$lte': today.getTime()};
         // findString['status'] = {'$in':['RESCHEDULED','SCHEDULED']};
@@ -628,7 +628,7 @@ var cont = {
           }, {
             $set: doctor,
           });
-        } else {}
+        } else { }
         console.log("Result", result);
 
         var updateId = await User.update({
@@ -690,7 +690,7 @@ var cont = {
           }, {
             $set: clinic,
           });
-        } else {}
+        } else { }
         console.log("Result", result);
 
         var updateId = await User.update({
@@ -1059,9 +1059,9 @@ var cont = {
       console.log("id", id);
 
       var app = await Appointments.find({
-          client: Object(id),
-          status: status,
-        })
+        client: Object(id),
+        status: status,
+      })
         .populate("doctor")
         .lean();
 
@@ -1080,9 +1080,7 @@ var cont = {
   },
 
   getLocations: async function (req, res) {
-    var locations = await User.find({
-      visible: 1,
-    }, {
+    var locations = await User.find({ visible: 1, address: { $exists: true } }, {
       "address.city": 1,
       "address.locality": 1,
       _id: 0,
@@ -1100,7 +1098,7 @@ var cont = {
         var obj = {};
         obj.city = address_obj.address.city;
         obj.locality = address_obj.address.locality;
-        if (obj.city != "" && obj.locality != "") {
+        if (obj.city && obj.locality) {
           obj.city = obj.city.toUpperCase().trim();
           obj.locality = obj.locality.toUpperCase().trim();
 
@@ -1165,7 +1163,7 @@ async function sendAppointmentSms(appointment) {
         sms: [{
           message: message,
           to: [number],
-        }, ],
+        },],
       },
       json: true,
       headers: {
