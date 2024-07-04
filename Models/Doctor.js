@@ -5,23 +5,19 @@ var mongoConn = require('../Database/mongoConn');
 var doctorSchema = mongoose.Schema({
   name: {
     type: String,
-    required: true // Makes the name field mandatory
+    required: true 
   },
   specialty: {
     type: String,
-    required: true // Makes the specialty field mandatory
+    required: true 
   },
   email: {
     type: String,
     required: true,
-    match: /.+\@.+\..+/ // Simple regex for email validation
+    match: /.+\@.+\..+/ 
   },
-  phone: {
-    type: String,
-    required: false // Phone number is optional
-  }
-}, {
-  strict: true, // Only the fields defined in the schema are allowed
+  clinics: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Clinic'
+  }] 
 });
-
-module.exports = mongoose.model('Doctor', doctorSchema, 'doctors');
